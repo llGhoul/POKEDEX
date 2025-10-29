@@ -1,11 +1,67 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pokedex</title>
+    <link rel="stylesheet" href="./styles.css">
 </head>
 <body>
+    <header class="header" role="banner">
+        <h1 class="title">Pokédex</h1>
+
+        <form class="controls" role="search" aria-label="Búsqueda y filtros" autocomplete="off">
+            <label class="visually-hidden" for="search">Buscar por nombre o número</label>
+            <input id="search" name="search" type="search" placeholder="Buscar por nombre o # (ej. 25)"
+                   inputmode="search" aria-describedby="search-hint">
+            <span id="search-hint" class="hint">Pulsa Enter o espera un instante</span>
+
+            <label class="visually-hidden" for="type">Filtrar por tipo</label>
+            <select id="type" name="type" aria-label="Filtrar por tipo">
+                <option value="">Todos los tipos</option>
+            </select>
+            <p></p>
+            <label class="visually-hidden" for="region">Filtrar por región</label>
+            <select id="region" name="region" aria-label="Filtrar por región">
+               <option value="">Todas las regiones</option>
+            </select>
+        </form>
+    </header>
+
+    <main class="main" role="main">
+        <section class="grid" id="grid" aria-live="polite" aria-busy="false">
+            <!-- Tarjetas -->
+        </section>
+
+        <!-- Sentinela para scroll infinito -->
+        <div id="sentinel" class="sentinel" aria-hidden="true"></div>
+    </main>
+
     
+
+    <!-- Template de tarjeta -->
+    <template id="card-template">
+        <article class="card" tabindex="0">
+            <div class="card__media">
+                <img class="card__img" alt="" loading="lazy" width="200" height="200">
+            </div>
+            <div class="card__body">
+                <header class="card__header">
+                    <span class="card__id"></span>
+                    <h2 class="card__name"></h2>
+                </header>
+                <div class="card__types"></div>
+                <details class="card__details">
+                    <summary>Detalles</summary>
+                    <ul class="card__stats"></ul>
+                    <ul class="card__abilities"></ul>
+                </details>
+            </div>
+        </article>
+    </template>
+
+    <div id="status" class="sr-only" role="status" aria-live="polite"></div>
+
+    <script defer src="./app.js"></script>
 </body>
 </html>
