@@ -90,6 +90,8 @@ function typePill(name) {
   return span;
 }
 
+//
+
 function statItem(name, value) {
   const li = document.createElement('li');
   li.textContent = `${name}: ${value}`;
